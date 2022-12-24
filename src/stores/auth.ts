@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import axios from '@/services/axios'
 import { useRouter } from "vue-router"
 
-const router = useRouter()
+import router from '@/router'
 
 export const useAuthStore = defineStore('auth', {
     state: () => ({
@@ -33,12 +33,12 @@ export const useAuthStore = defineStore('auth', {
             this.loading = true
             axios.post('/register', new FormData(formData.target))
                 .then(res => {
-                    console.log(res);
+                    localStorage.token = res.data.token
                     router.push('/auth/app-setup')
                 }).catch(err => {
-                    this.error = err.message
+                    this.error = err.response.data.message
                 }).finally(() => {
-                    this.loading = true
+                    this.loading = false
                 })
         },
         errorClear() {
