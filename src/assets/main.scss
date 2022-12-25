@@ -40,3 +40,13 @@ body {
     padding: .6rem;
   }
 }
+
+.btn{
+  border: none;
+  cursor: pointer;
+  &--red{ background-color: red; color: white; &:hover{ background-color: lighten(red, 20); } }
+  &--green{ background-color: green; color: white; &:hover{ background-color: lighten(green, 20); } }
+  &--blue{ background-color: blue; color: white; &:hover{ background-color: lighten(blue, 20); } }
+  &--gray{ background-color: gray; color: white; &:hover{ background-color: lighten(gray, 20); } }
+  &--white{ background-color: white; color: black; &:hover{ background-color: lighten(white, 20); } }
+}

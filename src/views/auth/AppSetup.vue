@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import axios from '@/services/axios'
 import { ref } from 'vue'
-import { RouterLink, useRouter } from "vue-router"
+import { useRouter } from "vue-router"
 const router = useRouter()
 
 const submitting = ref(false)
