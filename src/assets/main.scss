@@ -50,3 +50,15 @@ body {
   &--gray{ background-color: gray; color: white; &:hover{ background-color: lighten(gray, 20); } }
   &--white{ background-color: white; color: black; &:hover{ background-color: lighten(white, 20); } }
 }
+
+.table {
+  th {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid black;
+  }
+  td {
+    padding: 5px;
+    background-color: #f1f1f1;
+  }
+}

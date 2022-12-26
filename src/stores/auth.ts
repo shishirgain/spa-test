@@ -6,7 +6,7 @@ import { useRouter } from "vue-router"
 export const useAuthStore = defineStore('auth', () => {
     const error = ref<String>('')
     const loading = ref<Boolean>(false)
-    const landload = ref<Boolean>(!(window.location.hostname.split('.').length > 1))
+    const landload = ref<Boolean>(localStorage.type == 'landlord' || true)
 
     const router = useRouter()
 
@@ -17,6 +17,7 @@ export const useAuthStore = defineStore('auth', () => {
             .then(res => {
                 if (res.status === 200) {
                     localStorage.token = res.data.token
+                    localStorage.type = res.data.type
                     router.push('/dashboard')
                     // this.getUser()
                 }

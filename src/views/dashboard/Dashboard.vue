@@ -1,6 +1,7 @@
 <template>
     <div class="p-2">
-        <table v-if="subscribers.length" class="w-full">
+        <h3>User list</h3>
+        <table v-if="subscribers.length" class="w-full table">
             <thead>
                 <tr>
                     <th>Name</th>
