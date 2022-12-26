@@ -29,7 +29,7 @@ export default {
             component: AppSetup,
             meta: {
                 title: 'Application setup',
-                // auth: true
+                auth: true
             }
         }
     ]

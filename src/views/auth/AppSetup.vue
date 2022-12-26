@@ -8,7 +8,7 @@
                     <label for="domain">Domain name</label> 
                     <small class="text-color-red" v-if="errors">{{ errors }}</small>
                 </div>
-                <input class="form__item" type="text" name="domain" placeholder="Domain" required>
+                <input class="form__item" type="text" name="tenant" placeholder="Tenant" required>
             </div>
             <hr style="width: 100%">
             <input class="form__item--btn" style="width: 200px;" type="submit" :value="submitting ? 'Submitting' : 'Save'" :disabled="submitting">
@@ -27,13 +27,14 @@ const errors = ref('')
 
 const submit = (formData: any) => {
     submitting.value = true
-    axios.post('/login', new FormData(formData.target)).then(res => {
+    axios.post('/create-tenant', new FormData(formData.target)).then(res => {
         console.log(res);
+        if(res.statusText == 'OK'){
+            router.push('/dashboard')
+        }
     }).catch(err => {
-        console.log(err);
-        errors.value = err.message
+        errors.value = err.response.data.message
     }).finally(() => {
-        router.push('/auth/app-setup')
         submitting.value = false
     })
 }

@@ -2,6 +2,7 @@ export interface User {
     id?: Number,
     name: String,
     email: String,
+    tenant?: Tenant,
     email_verified?: null | String,
     created_at?: String,
     undated_at?: String

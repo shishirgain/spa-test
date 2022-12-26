@@ -34,7 +34,7 @@ instance.interceptors.response.use(function (response) {
 
   if (error.response.status === 401) {
     localStorage.removeItem('token')
-    router.push('/auth/signin')
+    localStorage.removeItem('type')
   }
 
   return Promise.reject(error);

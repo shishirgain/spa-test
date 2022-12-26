@@ -1,7 +1,7 @@
 <template>
-    <div class="p-2">
+    <div class="p-2" v-if="subscribers.length">
         <h3>User list</h3>
-        <table v-if="subscribers.length" class="w-full table">
+        <table class="w-full table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -18,19 +18,34 @@
             </tbody>
         </table>
     </div>
+    <div v-if="!landload && user?.id">
+        <h3>User Info</h3>
+        <div>
+            <h2>Domains</h2>
+            <ul>
+                <li v-for="(domain, index) in user?.tenant?.domains">
+                    <!-- must need review -->
+                    <a :href="`${domain.domain}`" target="_blank">{{ domain.domain }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </template>
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { onBeforeMount } from 'vue';
 
 import { useDashboardStore } from '@/stores/dashboard'
+import { useApplicationStore } from '@/stores/application'
 import { useAuthStore } from '@/stores/auth'
 
-const dashboardStore = useDashboardStore()
 const authStore = useAuthStore()
+const applicationStore = useApplicationStore()
+const dashboardStore = useDashboardStore()
 
-const { subscribers } = storeToRefs(dashboardStore)
 const { landload } = storeToRefs(authStore)
+const { user } = storeToRefs(applicationStore)
+const { subscribers } = storeToRefs(dashboardStore)
 
 onBeforeMount(() => {
     if(landload.value) {

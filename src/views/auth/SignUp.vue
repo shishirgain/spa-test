@@ -8,7 +8,7 @@
             <input class="form__item" type="password" name="password_confirmation" placeholder="Confirm password" required>
             <hr>
             <small class="text-color-red" v-if="error">{{ error }}</small>
-            <input class="form__item--btn" type="submit" :value="loading ? 'Submitting' : 'Sing up'" :disabled="loading">
+            <input class="form__item--btn" type="submit" :value="loading ? 'Submitting' : 'Sing up'" :disabled="Boolean(loading)">
             <small>If Already registered. Please <router-link to="/auth/signin">Sign in</router-link></small>
         </form>
     </div>

@@ -6,7 +6,7 @@
             <input class="form__item" type="password" name="password" placeholder="Min: 8" required>
             <hr>
             <small class="text-color-red" v-if="error">{{ error }}</small>
-            <input class="form__item--btn" type="submit" :value="loading ? 'Submitting' : 'Sing in'" :disabled="loading">
+            <input class="form__item--btn" type="submit" :value="loading ? 'Submitting' : 'Sing in'" :disabled="Boolean(loading)">
             <small v-if="landload">If you don't have an account. Please <router-link to="/auth/signup">Sign Up</router-link></small>
         </form>
     </div>
